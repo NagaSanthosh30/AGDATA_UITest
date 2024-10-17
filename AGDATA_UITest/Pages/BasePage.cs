@@ -9,61 +9,36 @@ using System.Threading.Tasks;
 
 
 
+
 namespace AGDATA_UITest.Pages
 {
+
     public class BasePage
     {
-        protected IWebDriver Driver;
-        private static readonly ILogger log = new LoggerConfiguration()
-                                              .WriteTo.Console()
-                                              .CreateLogger();
-
+        protected IWebDriver driver;
+        protected WebDriverWait wait;
         public BasePage(IWebDriver driver)
+        // Initializing WebDriverWait (wait for up to 10 seconds)
         {
-            Driver = driver;
+            this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
-        // Reusable method to click on an element
-        public void ClickElement(By locator)
+        // Wait until an element is visible
+        public void WaitUntilElementVisible(By locator)
         {
-            try
-            {
-                log.Information("Clicking element: {Locator}", locator);
-                Driver.FindElement(locator).Click();
-            }
-            catch (Exception e)
-            {
-                log.Error("Failed to click element: {Locator}. Error: {ExceptionMessage}", locator, e.Message);
-                throw;
-            }
+            wait.Until(driver => driver.FindElement(locator).Displayed);
         }
 
-        // Reusable method to get text from an element
-        public string GetElementText(By locator)
-        {
-            log.Information("Getting text from element: {Locator}", locator);
-            return Driver.FindElement(locator).Text;
-        }
-
-        // Reusable method to navigate to a URL
+        // Navigating to the AGDATA URL
         public void NavigateToUrl(string url)
         {
-            log.Information("Navigating to URL: {Url}", url);
-            Driver.Navigate().GoToUrl(url);
+            driver.Navigate().GoToUrl("https://www.agdata.com");
         }
-
-        // Reusable wait method
-        public void WaitForElementToBeClickable(By locator, TimeSpan timeout)
-        {
-            WebDriverWait wait = new WebDriverWait(Driver, timeout);
-            wait.Until(ExpectedConditions.ElementToBeClickable(locator));
-        }
-       
-        }
-
-
-
-
     }
+
+
+
+}
 
 
