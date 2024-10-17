@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGDATA_UITest", "AGDATA_UITest\AGDATA_UITest.csproj", "{EC0E675A-1517-464C-8795-0FD5025B5481}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC0E675A-1517-464C-8795-0FD5025B5481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC0E675A-1517-464C-8795-0FD5025B5481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC0E675A-1517-464C-8795-0FD5025B5481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC0E675A-1517-464C-8795-0FD5025B5481}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B9E5866-459F-4D30-BB92-E3836C6AD104}
+	EndGlobalSection
+EndGlobal
