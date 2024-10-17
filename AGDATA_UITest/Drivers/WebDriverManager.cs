@@ -8,16 +8,30 @@ using System.Threading.Tasks;
 
 namespace AGDATA_UITest.Drivers
 {
-    // To Handle WebDriver instantiation and configuration
+    // This class handles browser initialization and cleanup.
     public class WebDriverManager
     {
-        public IWebDriver CreateDriver()
+        private IWebDriver driver;
+
+        public IWebDriver GetWebDriver()
         {
-            // For ChromeDriver adding implicit wait for 10seconds
-            var driver = new ChromeDriver();  
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            if (driver != null) return driver;
+
+            // Initialize Chrome browser
+            driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            // Implicit wait setup
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);  
             return driver;
         }
-    }
 
+        public void QuitWebDriver()
+        {
+            if (driver != null)
+            {
+                driver.Quit();
+                driver = null;
+            }
+        }
+    }
 }
