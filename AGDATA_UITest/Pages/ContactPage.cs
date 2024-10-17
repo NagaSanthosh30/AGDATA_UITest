@@ -17,6 +17,7 @@ namespace AGDATA_UITest.Pages
         public bool IsContactPageDisplayed()
         {
             return driver.FindElement(contactPageTitle).Displayed;
+            //Printing the line in the output
             Console.WriteLine("Contact Page is Loaded");
         }
     }
