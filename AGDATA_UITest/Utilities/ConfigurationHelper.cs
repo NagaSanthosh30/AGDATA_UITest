@@ -13,20 +13,22 @@ namespace AGDATA_UITest.Utilities
 
         static ConfigurationHelper()
         {
-            // Set up the configuration to read from appsettings.json
+            // Load configuration from the appsettings.json file
             var builder = new ConfigurationBuilder()
-                // Current directory path
                 .SetBasePath(Directory.GetCurrentDirectory())
-                // Add JSON file to the configuration
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                .AddJsonFile("appsettings.json");
 
-            configuration = builder.Build(); // Build the configuration
+            configuration = builder.Build();
         }
 
-        // Property to get BaseUrl
-        public static string BaseUrl => configuration["BaseUrl"];
+        public static string GetBaseUrl()
+        {
+            return configuration["BaseUrl"];
+        }
 
-        // Property to get Timeout and convert it to an integer
-        public static int Timeout => int.Parse(configuration["Timeout"]);
+        public static int GetTimeout()
+        {
+            return int.Parse(configuration["Timeout"]);
+        }
     }
 }

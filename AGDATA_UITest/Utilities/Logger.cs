@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AGDATA_UITest.Utilities
 {
-    public static class Logger
+    public class Logger
     {
         public static void Initialize()
         {

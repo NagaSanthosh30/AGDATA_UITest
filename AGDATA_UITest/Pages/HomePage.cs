@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace AGDATA_UITest.Pages
 {
-    //Common functionalities for page objects are encapsulated here.
-    // Calling BasePage Methods
+    using OpenQA.Selenium;
+
     public class HomePage : BasePage
-        // Finding elements using xpath
     {
-        private By solutionsMenu = By.XPath("//nav[@class='main-navigation']//a[text()='Solutions']");
-        private By marketIntelligenceOption = By.XPath("(//nav[@class='main-navigation']//following::a[text()='Market Intelligence'])[1]");
+        private By solutionsMenu = By.XPath("//a[contains(text(),'Solutions')]");
+        private By marketIntelligenceMenu = By.XPath("(//a[contains(text(),'Market Intelligence')])[1]");
 
         public HomePage(IWebDriver driver) : base(driver) { }
 
-        // Navigate to Market Intelligence
-        public void GoToMarketIntelligencePage()
+        public void NavigateToMarketIntelligence()
         {
-            driver.FindElement(solutionsMenu).Click();
-            // Wait after clicking Solutions
-            WaitUntilElementVisible(marketIntelligenceOption); 
-            driver.FindElement(marketIntelligenceOption).Click();
+            Click(solutionsMenu);
+            WaitUntilElementVisible(marketIntelligenceMenu); // Wait after clicking 'Solutions'
+            Click(marketIntelligenceMenu);
+           
         }
     }
 }

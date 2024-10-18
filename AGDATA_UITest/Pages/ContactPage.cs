@@ -9,16 +9,17 @@ namespace AGDATA_UITest.Pages
 {
     public class ContactPage : BasePage
     {
-        private By contactPageTitle = By.XPath("//section[@class='intro_header center-text']//h4[text()='Contact']");
+        private By contactHeader = By.XPath("//section[@class='intro_header center-text']//h4[text()='Contact']"); // Adjust the XPath according to the actual header text on the Contact page
 
         public ContactPage(IWebDriver driver) : base(driver) { }
 
-        // Check if the Contact page is displayed
-        public bool IsContactPageDisplayed()
+        // Method to check if the Contact page is loaded
+        public bool IsLoaded()
         {
-            return driver.FindElement(contactPageTitle).Displayed;
-            //Printing the line in the output
-            Console.WriteLine("Contact Page is Loaded");
+            // Wait until the contact header is visible
+            WaitUntilElementVisible(contactHeader);
+            // Return true if the header is displayed
+            return driver.FindElement(contactHeader).Displayed;
         }
     }
 }

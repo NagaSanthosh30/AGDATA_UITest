@@ -13,12 +13,13 @@ using System.Threading.Tasks;
 namespace AGDATA_UITest.Pages
 {
 
+
     public class BasePage
     {
         protected IWebDriver driver;
         protected WebDriverWait wait;
+
         public BasePage(IWebDriver driver)
-        // Initializing WebDriverWait (wait for up to 10 seconds)
         {
             this.driver = driver;
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -30,15 +31,13 @@ namespace AGDATA_UITest.Pages
             wait.Until(driver => driver.FindElement(locator).Displayed);
         }
 
-        // Navigating to the AGDATA URL
-        public void NavigateToUrl(string url)
+        // Click method with wait
+        public void Click(By locator)
         {
-            driver.Navigate().GoToUrl("https://www.agdata.com");
+            WaitUntilElementVisible(locator);
+            driver.FindElement(locator).Click();
         }
     }
-
-
-
 }
 
 
